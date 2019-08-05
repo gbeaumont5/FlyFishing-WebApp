@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1><%=river.name%></h1>
+    <img src="<%=river.image%>""
     <a href="/rivers/<%=river.id%>/edit"><button>Edit</button></a>
     <form action="/rivers/<%=river.id; %>?_method=DELETE" method="POST">
         <input type="submit" value="DELETE"/>

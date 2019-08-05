@@ -3,7 +3,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const riversController = require('./Controllers/rivers');
 
+const methodOverride = require('method-override');
 //--------------------------------------
 
 
@@ -14,19 +16,18 @@ const PORT = process.env.PORT || 3000;
 //Connect to database
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Rivers'
 
-// Connect to Mongo
+// Connect to Mongo/DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, () => {
 	console.log('connected to mongo database')
 });
 
-//-----------------------------------------------
-// Routes
-//-----------------------------------------------
+//Middleware
+app.use(express.urlencoded({ extended: false}));
+app.use(methodOverride('_method'));
+app.use('/rivers', riversController);
 
-//localhost:3000
-app.get('/' , (req, res) => {
-  res.send('app is running!');
-});
+
+
 
 //Listener
 app.listen(PORT, () => console.log('Listening on port:', PORT));
