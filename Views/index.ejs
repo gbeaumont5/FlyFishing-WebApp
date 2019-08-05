@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Browse Fly Fishing Destinations</h1>
-    <a href="rivers/new"><button>Create New</button></a>
+    <a href="/rivers/new"><button>Create New</button></a>
     <% for(let i = 0; i < rivers.length; i++){ %> 
     <h3><a href="/rivers/<%=rivers[i].id%>"><%=rivers[i].name%></a></h3>
     <% } %>

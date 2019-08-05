@@ -22,33 +22,34 @@ router.get('/' , (req, res) => {
     })
   });
 
-  //Show
-  router.get('/:id', (req, res) => {
-      Rivers.findById(req.params.id, (err, foundRiver) => {
-          res.render('show.ejs', {
-              river: foundRiver
-          });
-      });
-  });
-
+  
   //New Route 
   router.get('/new', (req, res) => {
       res.render('new.ejs');
-  })
-
-  //Edit
-  router.get('/:id/edit', (req, res) => {
-      Rivers.findById(req.params.id, (err, foundRiver) => {
-          if (err) {
-              console.log(err)
-          } else {
-              res.render('edit.ejs', {
-                  river: foundRiver
-              })
-          }
-      })
-  })
-
+    })
+    
+    //Edit
+    router.get('/:id/edit', (req, res) => {
+        Rivers.findById(req.params.id, (err, foundRiver) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.render('edit.ejs', {
+                    river: foundRiver
+                })
+            }
+        })
+    })
+    
+    //Show
+    router.get('/:id', (req, res) => {
+        Rivers.findById(req.params.id, (err, foundRiver) => {
+            res.render('show.ejs', {
+                river: foundRiver
+            });
+        });
+    });
+    
   //PUT
   router.put('/:id', (req, res) => {
     if (req.body.stocked === 'on'){

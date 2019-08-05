@@ -27,7 +27,10 @@ app.use(methodOverride('_method'));
 app.use('/rivers', riversController);
 
 
-
+//index
+app.get('/', (req, res) => {
+    res.redirect('/rivers')
+})
 
 //Listener
 app.listen(PORT, () => console.log('Listening on port:', PORT));
