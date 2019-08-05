@@ -8,6 +8,8 @@ const riversController = require('./Controllers/rivers');
 const methodOverride = require('method-override');
 //--------------------------------------
 
+//html
+app.use(express.static('public'))
 
 //PORT 
 const PORT = process.env.PORT || 3000;
