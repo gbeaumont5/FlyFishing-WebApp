@@ -5,11 +5,12 @@ const app = express();
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const session = require('express-session');
-
+require('dotenv').config();
+const secret = process.env.SECRET;
 //Controllers
-const riversController = require('./Controllers/rivers');
-const userController = require('./Controllers/users');
-const sessionController = require('./Controllers/sessions');
+const riversController = require('./controllers/rivers');
+const userController = require('./controllers/users');
+const sessionController = require('./controllers/sessions');
 
 //--------------------------------------
 
@@ -19,6 +20,11 @@ app.use(express.static('public'))
 //PORT 
 const PORT = process.env.PORT || 3000;
 
+app.use(session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: false
+}))
 
 //Middleware
 app.use(express.urlencoded({ extended: false}));
@@ -29,11 +35,6 @@ app.use('/rivers', riversController);
 app.use('/sessions', sessionController)
 app.use('/user', userController)
 
-app.use(session({
-    secret: 'connecticutrivers',
-    resave: false,
-    saveUninitialized: false
-}))
 
 //////////////Database////////////////////
 //Connect to database

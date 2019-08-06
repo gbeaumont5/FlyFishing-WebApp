@@ -1,7 +1,8 @@
 //Dependencies 
-const express = require('../node_modules/express');
+const express = require('express');
 const router = express.Router();
 const User = require('../models/users')
+const bcrypt = require('bcrypt');
 
 
 //Controller 
@@ -20,9 +21,11 @@ const Rivers = require('../models/rivers');
 router.get('/' , (req, res) => {
     Rivers.find({}, (error, allRivers) => {
         res.render('index.ejs', {
-        rivers: allRivers
+        rivers: allRivers,
+        currentUser: req.session.currentUser
         })
     })
+    console.log(req.session.currentUser)
   });
 
   

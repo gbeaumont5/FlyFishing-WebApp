@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
+const bcrypt = require('bcrypt');
 
 //new client
 router.get('/newUser', (req, res) => {
@@ -8,6 +9,7 @@ router.get('/newUser', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     User.create(req.body, (err, createdUser) => {
         res.redirect('/');
     });

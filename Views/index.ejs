@@ -11,14 +11,20 @@
 <header>
         <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
-                  <div class="bg-dark p-4" >
+                  <div class="bg-dark p-4" > 
+                    <% if (currentUser) { %>
+                    <h4 class="float-right">Welcome, <%= (currentUser.username) %>!</h4>
+                    <% } %>
                       <h4 class="text-muted "><a href="">About</a></h4>
-                     
+                     <% if (currentUser) { %>
                       <h4 class="text-muted "><a href="/rivers/new">Create New</a></h4>
-         
+                    <form action="/sessions?_method=DELETE" method="POST">
+                        <input type="submit" value="Logout"/>
+                    </form>
+                        <% } else { %>
                       <h4 class="text-muted"><a href="/sessions/login">Log In</a></h4>
                       <h4 class="text-muted"><a href="/user/newUser">Register</a></h4>
-                    
+                        <% } %>
                   </div>
                 </div>
                 <nav class="navbar navbar-dark bg-dark">
