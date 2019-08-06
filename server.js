@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const session = require('express-session');
 //Controllers
-const riversController = require('./controllers/rivers.js');
-const userController = require('./controllers/users.js');
-const sessionController = require('./controllers/sessions.js');
+const riversController = require('controllers/rivers.js');
+const userController = require('controllers/users.js');
+const sessionController = require('controllers/sessions.js');
 
 //--------------------------------------------
 require('dotenv').config();
