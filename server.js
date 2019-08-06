@@ -12,7 +12,7 @@ const riversController = require('./controllers/rivers.js');
 const userController = require('./controllers/users.js');
 const sessionController = require('./controllers/sessions.js');
 
-//-----------------------------------
+//--------------------------------------------
 
 //html
 app.use(express.static('public'))
