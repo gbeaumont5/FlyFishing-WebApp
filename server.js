@@ -8,9 +8,9 @@ const session = require('express-session');
 require('dotenv').config();
 const secret = process.env.SECRET;
 //Controllers
-const riversController = require('./controllers/rivers');
-const userController = require('./controllers/users');
-const sessionController = require('./controllers/sessions');
+const riversController = require('./controllers/rivers.js');
+const userController = require('./controllers/users.js');
+const sessionController = require('./controllers/sessions.js');
 
 //-----------------------------------
 
