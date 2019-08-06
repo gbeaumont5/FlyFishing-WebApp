@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const riversController = require('./Controllers/rivers');
-
+const session = require('express-session');
 const methodOverride = require('method-override');
 //--------------------------------------
 

@@ -6,26 +6,74 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <% include ./partials/head.ejs %>
-</head>
-<body>
-    <h1 class="text-center">Browse Fly Fishing Destinations</h1>
-    <a href="/rivers/new"><button>Create New</button></a>
-    <% for(let i = 0; i < rivers.length; i++){ %>
-    <div class="rivers container-fluid">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="jumbotron">
-                    <h3 class="text-center"><a href="/rivers/<%=rivers[i].id%>"><%=rivers[i].name%></a></h3>
-                    <a href="/rivers/<%=rivers[i].id%>"><img src="<%=rivers[i].image%>" class="img-fluid" alt="Responsive image"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <% } %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</head>
+<header>
+        <div class="pos-f-t">
+                <div class="collapse" id="navbarToggleExternalContent">
+                  <div class="bg-dark p-4" >
+                      <h4 class="text-muted "><a href="">About</a></h4>
+                      
+                      <h4 class="text-muted "><a href="/rivers/new">Create New</a></h4>
+                     
+                      <h4 class="text-muted"><a href="/Sessions/login">Log In</a></h4>
+                      <h4 class="text-muted"><a href="/users/newUser">Register</a></h4>
+                      
+                  </div>
+                </div>
+                <nav class="navbar navbar-dark bg-dark">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                </nav>
+              </div>
+</header>
+<body>
+    <div class="container">
+        <h1 class="text-center title">Browse Fly Fishing Destinations</h1>
+    </div>
+    <section class="container text-center">
+        <div class="row">
+                <% for(let i = 0; i < rivers.length; i++){ %>
+                    <div class="rivers">
+                        <a href="/rivers/<%=rivers[i].id%>">
+                            <article class="col">
+                                    <img src="<%=rivers[i].image%>" class="" alt="">
+                                    <h3 class="text-center"><%=rivers[i].name%></h3>
+                                
+                            </article>
+                        </a>
+                    </div>
+                        <% } %>
+        </div>
+    </section>
+            
+    <script>
+    $(document).ready = () => {
+        $('.rivers').hover(() => {
+            $(this).animate({
+                marginTop: "8px",
+            }, 200);
+        },
+
+        () => {
+            $(this).animate({
+                marginTop: "20px"
+            }, 200);
+        }
+
+        )
+    }
+    </script>
+
+
+
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    
 
 </body>
 </html>
+

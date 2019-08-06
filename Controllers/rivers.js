@@ -1,12 +1,12 @@
 //Dependencies 
-const express = require('express');
+const express = require('../node_modules/express');
 const router = express.Router();
 
 //Controller 
 // const riversController = require('method-override');
 
 //model
-const Rivers = require('./../models/rivers');
+const Rivers = require('../models/rivers');
 
 
 //-------------------------------------------
