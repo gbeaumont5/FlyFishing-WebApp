@@ -1,6 +1,8 @@
 //Dependencies 
 const express = require('../node_modules/express');
 const router = express.Router();
+const User = require('../models/users')
+
 
 //Controller 
 // const riversController = require('method-override');
@@ -13,6 +15,7 @@ const Rivers = require('../models/rivers');
 //       Routes
 //-------------------------------------------
 
+
 //Index
 router.get('/' , (req, res) => {
     Rivers.find({}, (error, allRivers) => {
@@ -23,12 +26,8 @@ router.get('/' , (req, res) => {
   });
 
   
-  //New Route 
-  router.get('/new', (req, res) => {
-      res.render('new.ejs');
-    })
     
-    //Edit
+    //Edit post
     router.get('/:id/edit', (req, res) => {
         Rivers.findById(req.params.id, (err, foundRiver) => {
             if (err) {
@@ -41,7 +40,7 @@ router.get('/' , (req, res) => {
         })
     })
     
-    //Show
+    //Show post
     router.get('/:id', (req, res) => {
         Rivers.findById(req.params.id, (err, foundRiver) => {
             res.render('show.ejs', {
@@ -50,7 +49,7 @@ router.get('/' , (req, res) => {
         });
     });
     
-  //PUT
+  //PUT 
   router.put('/:id', (req, res) => {
     if (req.body.stocked === 'on'){
         req.body.stocked = true;
@@ -66,7 +65,7 @@ router.get('/' , (req, res) => {
       });
   });
 
-  //Create Route
+  //Create Post
   router.post('/', (req, res) => {
       console.log(req.body);
       if (req.body.stocked === 'on'){

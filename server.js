@@ -3,9 +3,14 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const riversController = require('./Controllers/rivers');
-const session = require('express-session');
 const methodOverride = require('method-override');
+const session = require('express-session');
+
+//Controllers
+const riversController = require('./Controllers/rivers');
+const userController = require('./Controllers/users');
+const sessionController = require('./Controllers/sessions');
+
 //--------------------------------------
 
 //html
@@ -13,6 +18,22 @@ app.use(express.static('public'))
 
 //PORT 
 const PORT = process.env.PORT || 3000;
+
+
+//Middleware
+app.use(express.urlencoded({ extended: false}));
+app.use(methodOverride('_method'));
+app.use('/rivers', riversController);
+
+// static files middleware
+app.use('/sessions', sessionController)
+app.use('/user', userController)
+
+app.use(session({
+    secret: 'connecticutrivers',
+    resave: false,
+    saveUninitialized: false
+}))
 
 //////////////Database////////////////////
 //Connect to database
@@ -23,10 +44,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, () => {
 	console.log('connected to mongo database')
 });
 
-//Middleware
-app.use(express.urlencoded({ extended: false}));
-app.use(methodOverride('_method'));
-app.use('/rivers', riversController);
 
 
 //index
