@@ -7,7 +7,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 
 //Controllers
-const riversController = require('./controllers/rivers.js');
+const riversController = require('./controllers/rivers');
 const userController = require('./controllers/users');
 const sessionController = require('./controllers/sessions');
 
