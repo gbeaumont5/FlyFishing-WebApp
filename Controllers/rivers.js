@@ -28,6 +28,15 @@ router.get('/' , (req, res) => {
     console.log(req.session.currentUser)
   });
 
+    //New post
+
+    router.get('/new', (req, res) => {
+        res.render('new.ejs')
+    })
+
+
+
+
   
     
     //Edit post
