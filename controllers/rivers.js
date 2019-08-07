@@ -56,7 +56,8 @@ router.get('/' , (req, res) => {
     router.get('/:id', (req, res) => {
         Rivers.findById(req.params.id, (err, foundRiver) => {
             res.render('show.ejs', {
-                river: foundRiver
+                river: foundRiver,
+                currentUser: req.session.currentUser
             });
         });
     });
