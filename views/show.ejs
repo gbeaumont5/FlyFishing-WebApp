@@ -7,19 +7,47 @@
     <title>Document</title>
     <% include ./partials/head.ejs %>
 </head>
-<body>
-    <div class="jumbotron">
-        <h1><%=river.name%></h1>
-        <img src="<%=river.image%>">
-        <p><%=river.description%></p>
-        <% if (currentUser) { %>
-        <a href="/rivers/<%=river.id%>/edit"><button>Edit</button></a>
-        <form action="/rivers/<%=river.id; %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete"/>
-        </form>
-        <% } %> 
-    </div>
-    <a href="/rivers/"><button>Back to Home</button></a>
+<header>
+        <div class="pos-f-t">
+                <div class="collapse" id="navbarToggleExternalContent">
+                  <div class="bg-dark p-4" > 
+                        <a href="/rivers/"><h4>Home</h4></a>
+                     <% if (currentUser) { %>
+                    <form action="/sessions?_method=DELETE" method="POST">
+                        <input type="submit" value="Logout"/>
+                    </form>
+                        <% } else { %>
+                      <h4 class="text-muted"><a href="/sessions/login">Log In</a></h4>
+                      <h4 class="text-muted"><a href="/user/newUser">Register</a></h4>
+                        <% } %>
+                  </div>
+                </div>
+                <nav class="navbar navbar-dark bg-dark">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                </nav>
+              </div>
+</header>
+<body style="background-color: #A2BCE0">
+        <div class="container">
+            <h1 style="color: #F0F0F0"><%=river.name%></h1>
+            <img src="<%=river.image%>">
+            <p><%=river.description%></p>
+            
+            <form action="/rivers/comments/<%=river.id%>?_method=PUT" method="POST">
+                <textarea type="text" name="comments">
+                </textarea>
+                <input type="submit" value="Add Comment">
+            </form>
+            <% if (river.comments.length < 1) { %>
+                <p>There are no comments!</p>
+               <% } else {
+                    for(let i = 0; i < river.comments.length; i++) { %>
+                        <p><%=river.comments[i]%></p>
+                        <% } 
+                } %>
+    
 
     
 
