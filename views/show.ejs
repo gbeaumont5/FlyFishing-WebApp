@@ -42,10 +42,11 @@
 </header>
 <body style="background-color: #A2BCE0">
         <div class="container">
-            <h1 style="color: #F0F0F0"><%=river.name%></h1>
-            <img src="<%=river.image%>">
-            <p><%=river.description%></p>
-            
+                <h1 class="text-center" style="color: #F0F0F0"><%=river.name%></h1>
+                <div id="info" class="d-flex flex-row">
+                        <div class="p-2 border"><img id="showImg" src="<%=river.image%>"></div>
+                        <div class="p-2 border"><p><%=river.description%></p></div>
+                </div>
             <% if (currentUser) { %>
             <form action="/rivers/comments/<%=river.id%>?_method=PUT" method="POST">
                 <textarea type="text" name="comments" id="comments">
