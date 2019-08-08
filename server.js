@@ -11,9 +11,12 @@ const riversController = require('./controllers/rivers');
 const userController = require('./controllers/users');
 const sessionController = require('./controllers/sessions');
 
+
+
 //--------------------------------------------
 require('dotenv').config();
 const secret = process.env.SECRET;
+const map = process.env.MAP;
 
 //html
 app.use(express.static('public'))

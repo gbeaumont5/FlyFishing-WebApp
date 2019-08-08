@@ -9,7 +9,7 @@ const riverSchema = new mongoose.Schema({
     hatches: String,
     stocked: Boolean,
     stocking_number: Number,
-    other_info: String
+    comments: [String]
 })
 
 const River = mongoose.model('River', riverSchema)

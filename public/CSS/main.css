@@ -1,16 +1,22 @@
 /* * { border: 1px solid black; } */
 
-body {
-    background-color: #2f2fa2;
+header{
+    color: #007bff;
+    font-size: 30px;
 }
+
+ul {
+   list-style-type: none;
+}
+
 .rivers{ 
-    border: 5px solid black;
+    
     border-radius: 7px;
     padding-top: 10px;
     margin-bottom: 25px;
     margin-left: 10px;
     margin-right: 10px;
-    background-color: #b5b5b5;
+    background-color: #5E5C6C;
 }
 
 .rivers:hover{
@@ -34,6 +40,14 @@ img {
     padding:30px;
 }
 
-body {
-    
+.logout {
+    all: unset;
+}
+
+a {
+    all: unset; 
+}
+
+.logout:hover{
+    text-decoration: underline;
 }

@@ -3,11 +3,15 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/users')
 const bcrypt = require('bcrypt');
+require('dotenv').config();
 
 
 //Controller 
 // const riversController = require('method-override');
 
+
+// Seed
+const seed = require('../models/seed');
 //model
 const Rivers = require('../models/rivers');
 
@@ -16,6 +20,12 @@ const Rivers = require('../models/rivers');
 //       Routes
 //-------------------------------------------
 
+//Seed the Data
+router.get('/seedRivers', (req, res) => {
+    Rivers.create(seed, (err, createdRivers) => {
+        res.redirect('/');
+    })
+})
 
 //Index
 router.get('/' , (req, res) => {
@@ -25,7 +35,6 @@ router.get('/' , (req, res) => {
         currentUser: req.session.currentUser
         })
     })
-    console.log(req.session.currentUser)
   });
 
     //New post
@@ -57,12 +66,14 @@ router.get('/' , (req, res) => {
         Rivers.findById(req.params.id, (err, foundRiver) => {
             res.render('show.ejs', {
                 river: foundRiver,
-                currentUser: req.session.currentUser
+                currentUser: req.session.currentUser,
+                MAP: process.env.MAP
             });
         });
+        
     });
     
-  //PUT 
+  //PUT / Update 
   router.put('/:id', (req, res) => {
     if (req.body.stocked === 'on'){
         req.body.stocked = true;
@@ -77,6 +88,19 @@ router.get('/' , (req, res) => {
           }
       });
   });
+
+  // Comment Route
+    router.put('/comments/:id', (req, res) => {
+        console.log(req.body)
+        Rivers.findByIdAndUpdate(req.params.id, Rivers.update({$push: {comments: req.body.comments}}), {new: true}, (err, updatedComment) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect(`/rivers/${req.params.id}`);
+            }
+        });
+    });
+
 
   //Create Post
   router.post('/', (req, res) => {
