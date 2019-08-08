@@ -10,19 +10,30 @@
 <header>
         <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
-                  <div class="bg-dark p-4" > 
-                        <a href="/rivers/"><h4>Home</h4></a>
+                  <div style="background-color: #5E5C6C"class="p-4"> 
+                      <ul>
+                        <li><a href="/rivers/">Home</a></li>
                      <% if (currentUser) { %>
                     <form action="/sessions?_method=DELETE" method="POST">
-                        <input type="submit" value="Logout"/>
+                        <li><input class="logout" type="submit" value="Logout"/></li>
                     </form>
-                        <% } else { %>
-                      <h4 class="text-muted"><a href="/sessions/login">Log In</a></h4>
-                      <h4 class="text-muted"><a href="/user/newUser">Register</a></h4>
+                    <% } else { %>
+                      <li><a href="/sessions/login">Log In</a></li>
+                      <li><a href="/user/newUser">Register</a></li>
                         <% } %>
+                    <% if (currentUser) { %>
+                        <% if (currentUser.username === "Admin") { %>
+                            <li><a href="/rivers/<%=river.id%>/edit">Edit</a></li>
+                            <li> <form action="/rivers/<%=river.id; %>?_method=DELETE" method="POST">
+                                <input type="submit" value="Delete"/>
+                                </form></li>
+                    <% } %>
+                    <% } %>
+                    
+                    </ul>
                   </div>
                 </div>
-                <nav class="navbar navbar-dark bg-dark">
+                <nav style="background-color: #5E5C6C" class="navbar navbar-dark ">
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -35,18 +46,22 @@
             <img src="<%=river.image%>">
             <p><%=river.description%></p>
             
+            <% if (currentUser) { %>
             <form action="/rivers/comments/<%=river.id%>?_method=PUT" method="POST">
-                <textarea type="text" name="comments">
+                <textarea type="text" name="comments" id="comments">
                 </textarea>
                 <input type="submit" value="Add Comment">
             </form>
+            <% } %>
             <% if (river.comments.length < 1) { %>
                 <p>There are no comments!</p>
                <% } else {
                     for(let i = 0; i < river.comments.length; i++) { %>
-                        <p><%=river.comments[i]%></p>
+                        <p>Comment <%=[i]%>: <%=river.comments[i]%></p>
                         <% } 
                 } %>
+            
+        
     
 
     
