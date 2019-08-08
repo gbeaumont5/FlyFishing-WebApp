@@ -17,11 +17,17 @@ ul {
     margin-left: 10px;
     margin-right: 10px;
     background-color: #5E5C6C;
+    transition-duration: 800ms;
 }
 
 .rivers:hover{
     -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
-    box-shadow: -px 9px 40px -12px rgba(0, 0, 0, 0.75)
+    box-shadow: -px 9px 40px -12px rgba(0, 0, 0, 0.75);
+    -webkit-tranform: scale(1.08);
+    -ms-transform: scale(1.08);
+    transform: scale(1.08);
+    transition-duration: 800ms;
+    cursor: pointer;
     
 }
 
@@ -51,3 +57,24 @@ a {
 .logout:hover{
     text-decoration: underline;
 }
+
+@media screen and (max-width: 768px) {
+    #info {
+      flex-direction: column !important;
+    }
+    .p-2 {
+      width: 100%;
+    }
+    #showImg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .rivers{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+  }

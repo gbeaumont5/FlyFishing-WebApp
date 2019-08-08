@@ -11,7 +11,7 @@ require('dotenv').config();
 
 
 // Seed
-const seed = require('../models/seed');
+// const seed = require('../models/seed');
 //model
 const Rivers = require('../models/rivers');
 
@@ -21,11 +21,11 @@ const Rivers = require('../models/rivers');
 //-------------------------------------------
 
 //Seed the Data
-router.get('/seedRivers', (req, res) => {
-    Rivers.create(seed, (err, createdRivers) => {
-        res.redirect('/');
-    })
-})
+// router.get('/seedRivers', (req, res) => {
+//     Rivers.create(seed, (err, createdRivers) => {
+//         res.redirect('/');
+//     })
+// })
 
 //Index
 router.get('/' , (req, res) => {
