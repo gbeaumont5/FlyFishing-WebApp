@@ -16,7 +16,6 @@
                     <% if (currentUser) { %>
                      <li class="float-right">Welcome, <%= (currentUser.username) %>!</li>
                     <% } %>
-                      <li><a href="">About</a></li>
                      <% if (currentUser) { %>
                       <li><a href="/rivers/new">Create New</a></li>
                     <form action="/sessions?_method=DELETE" method="POST">

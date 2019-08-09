@@ -9,6 +9,29 @@ ul {
    list-style-type: none;
 }
 
+p {
+ font-size: 25px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#showImg {
+    border: 5px solid rgb(94, 92, 107);
+    margin-right: 15px;
+    background-color: rgb(94, 92, 107)
+}
+
+#commentButton {
+    margin-bottom: 5px;
+    margin-left: 20px;
+    
+    
+}
+
 .rivers{ 
     
     border-radius: 7px;
@@ -75,6 +98,6 @@ a {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        
+        color: white;
     }
   }

@@ -25,7 +25,7 @@
                         <% if (currentUser.username === "Admin") { %>
                             <li><a href="/rivers/<%=river.id%>/edit">Edit</a></li>
                             <li> <form action="/rivers/<%=river.id; %>?_method=DELETE" method="POST">
-                                <input type="submit" value="Delete"/>
+                                <input class="logout" type="submit" value="Delete"/>
                                 </form></li>
                     <% } %>
                     <% } %>
@@ -42,25 +42,33 @@
 </header>
 <body style="background-color: #A2BCE0">
         <div class="container">
-                <h1 class="text-center" style="color: #F0F0F0"><%=river.name%></h1>
+                <h1 class="text-center" style="color: #F0F0F0; margin-top: 15px"><%=river.name%></h1>
                 <div id="info" class="d-flex flex-row">
-                        <div class="p-2 border"><img id="showImg" src="<%=river.image%>"></div>
-                        <div class="p-2 border"><p><%=river.description%></p></div>
+                        <div class="p-2"><img id="showImg" src="<%=river.image%>"></div>
+                        <div class="d-flex flex-column">
+                            <div class="p-2"><p><%=river.description%></p></div>
+                            <% if (river.stocked === true) { %>
+                            <p class="p-2">The river is stocked with <%=river.stocking_number%> trout annually.</p>
+                            <% } %>
+                            <% if (currentUser) { %>
+                            <form action="/rivers/comments/<%=river.id%>?_method=PUT" method="POST">
+                                <div class="flex">
+                                <textarea type="text" name="comments" id="comments">
+                                </textarea>
+                                <input class=" btn btn-secondary" id="commentButton" type="submit" value="Add Comment">
+                                </div>
+                            </form>
+                            <% } %>
+                            <% if (river.comments.length < 1) { %>
+                                <p class="p-2">There are no comments!</p>
+                                <% } else {
+                                    for(let i = 0; i < river.comments.length; i++) { %>
+                                        <p style="margin-top: 20px" class="p-2">Comment <%=[i+1]%>: <%=river.comments[i]%></p>
+                                        <% } 
+                                } %>
+                        </div>
                 </div>
-            <% if (currentUser) { %>
-            <form action="/rivers/comments/<%=river.id%>?_method=PUT" method="POST">
-                <textarea type="text" name="comments" id="comments">
-                </textarea>
-                <input type="submit" value="Add Comment">
-            </form>
-            <% } %>
-            <% if (river.comments.length < 1) { %>
-                <p>There are no comments!</p>
-               <% } else {
-                    for(let i = 0; i < river.comments.length; i++) { %>
-                        <p>Comment <%=[i]%>: <%=river.comments[i]%></p>
-                        <% } 
-                } %>
+            
             
         
     

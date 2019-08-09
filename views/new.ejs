@@ -8,20 +8,35 @@
     <% include ./partials/head.ejs %>
 </head>
 <body>
-    <h1>Add A New Location</h1>
-    <form action="/rivers" method="POST">
-    <input type="text" name="name" placeholder="Name"/>
-    <input type="text" name="image" placeholder="Image Link"/>
-    <textarea type="text" name="description"> Description
-    </textarea>
-    <input type="text" name="fish_species" placeholder="Fish Species">
-    <input type="text" name="hatches" placeholder="Hatches">
-    <label>Stocked?</label>
-    <input type="checkbox" name="stocked">
-    <input type="text" name="stocking_number" placeholder="Quantity of Stocked Fish">
-    <input type="submit">
-
-    </form>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">Add A New Location</h1>
+            <form action="/rivers" method="POST">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" type="text" name="name" placeholder="Name"/>
+            </div>
+            <div class="form-group">
+                <label>Image Link</label>
+                <input class="form-control" type="text" name="image" placeholder="Image Link"/>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" type="text" name="description"> Description
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label>Stocked?</label>
+                <input class="form-control" type="checkbox" name="stocked">
+            </div>
+            <div class="form-group">
+            <label>Amount Stocked</label>
+            <input class="form-control" type="text" name="stocking_number" placeholder="Quantity of Stocked Fish">
+            </div>
+            <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
