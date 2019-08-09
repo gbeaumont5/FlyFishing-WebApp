@@ -10,6 +10,16 @@ https://intense-beach-33221.herokuapp.com/rivers/
 
 ## Wireframes 
 
+####Orginal mobile homepage wireframe:
+![This Link](https://github.com/gbeaumont5/FlyFishing-WebApp/blob/master/Images/WireFrames/Index.ejs%20homepage.png?raw=true)
+
+####Create new location wireframe:
+![This Link](https://github.com/gbeaumont5/FlyFishing-WebApp/blob/master/Images/WireFrames/Create%20Page.png?raw=true)
+
+####Show Page wireframe:
+
+![This Link](https://github.com/gbeaumont5/FlyFishing-WebApp/blob/master/Images/WireFrames/Show%20Page.png?raw=true)
+
 ## Frameworks Used:
 
 HTML, CSS, Javascript, Bootstrap, Express, EJS, MongoDB, Mongoose
@@ -23,6 +33,7 @@ HTML, CSS, Javascript, Bootstrap, Express, EJS, MongoDB, Mongoose
 * Ability to track specific user comments 
 * A search feature
 * A fishing report and trip description creation feature 
+* Ability to add multiple photos
 
 ## Credits 
 
